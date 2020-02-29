@@ -89,30 +89,25 @@ public class MainActivity extends AppCompatActivity {
      * Sets score text
      */
     private void setScore() {
-        if ((pointPlayerA == pointPlayerB) && (pointPlayerA < 3)) {
-            setScoreTextBox(convertScoreToCall(pointPlayerA) + "-all");
-        } else if (pointPlayerA == pointPlayerB) {
+        if ((pointPlayerA == 4) && (pointPlayerB <= 2)) {
+            setScoreTextBox("Set Player A");
+            setComplete = true;
+        } else if ((pointPlayerB == 4) && (pointPlayerA <= 2)) {
+            setScoreTextBox("Set Player B");
+            setComplete = true;
+        } else if ((pointPlayerA == pointPlayerB) && (pointPlayerA >= 3) && (pointPlayerB >= 3)) {
             setScoreTextBox("Deuce");
-        } else if ((pointPlayerA >= 4) && ((pointPlayerA - pointPlayerB) >= 2)) {
-            setScoreTextBox("Player A: Set");
-            setComplete = true;
-        } else if ((pointPlayerB >= 4) && ((pointPlayerB - pointPlayerA) >= 2)) {
-            setScoreTextBox("Player B: Set");
-            setComplete = true;
-        } else if (((pointPlayerA >= 4) && (pointPlayerB >= 4)) && (pointPlayerA > pointPlayerB)) {
+        } else if (((pointPlayerA - pointPlayerB) == 1) && (pointPlayerA >= 3) && (pointPlayerB >= 3)) {
             setScoreTextBox("Advantage Player A");
-        } else if ((pointPlayerA >= 4) && (pointPlayerB >= 4)) {
+        } else if (((pointPlayerB - pointPlayerA) == 1) && (pointPlayerA >= 3) && (pointPlayerB >= 3)) {
             setScoreTextBox("Advantage Player B");
-        } else if ((pointPlayerA < 4) && (pointPlayerB < 4)) {
-            setScoreTextBox(convertScoreToCall(pointPlayerA) + "-" + convertScoreToCall(pointPlayerB));
-        } else if (((pointPlayerA >= 4) && (pointPlayerB < 4) || (pointPlayerA < 4) && (pointPlayerB >= 4))
-                && ((pointPlayerA >= 3) && (pointPlayerB >= 3))
-                && (pointPlayerA > pointPlayerB)) {
-            setScoreTextBox("Advantage Player A");
-        } else if (((pointPlayerA >= 4) && (pointPlayerB < 4) || (pointPlayerA < 4) && (pointPlayerB >= 4))
-                && ((pointPlayerA >= 3) && (pointPlayerB >= 3))) {
-            setScoreTextBox("Advantage Player B");
-        } else if ((pointPlayerA >= 4) && (pointPlayerB < 4) || (pointPlayerA < 4) && (pointPlayerB >= 4)) {
+        } else if (((pointPlayerA - pointPlayerB) == 2) && (pointPlayerA >= 3) && (pointPlayerB >= 3)) {
+            setScoreTextBox("Set Player A");
+            setComplete = true;
+        } else if (((pointPlayerB - pointPlayerA) == 2) && (pointPlayerA >= 3) && (pointPlayerB >= 3)) {
+            setScoreTextBox("Set Player B");
+            setComplete = true;
+        } else {
             setScoreTextBox(convertScoreToCall(pointPlayerA) + "-" + convertScoreToCall(pointPlayerB));
         }
     }
